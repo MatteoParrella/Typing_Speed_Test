@@ -1,0 +1,71 @@
+{
+  "easy": {
+    "quotes": [
+      { "id": "e-q-1", "text": "The sun rose over the quiet town. Birds sang in the trees as people woke up and started their day." },
+      { "id": "e-q-2", "text": "I like to read books before I go to sleep. It helps me relax after a long day." },
+      { "id": "e-q-3", "text": "Walking in the park is a great way to clear your mind and get some fresh air." },
+      { "id": "e-q-4", "text": "Success is not final, failure is not fatal: it is the courage to continue that counts." },
+      { "id": "e-q-5", "text": "Life is what happens when you are busy making other plans." }
+    ],
+    "lyrics": [
+      { "id": "e-l-1", "text": "Yesterday, all my troubles seemed so far away. Now it looks as though they are here to stay." },
+      { "id": "e-l-2", "text": "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality." },
+      { "id": "e-l-3", "text": "Imagine all the people living life in peace. You may say I am a dreamer, but I am not the only one." },
+      { "id": "e-l-4", "text": "Every breath you take and every move you make, I will be watching you." },
+      { "id": "e-l-5", "text": "Hello from the other side, I must have called a thousand times." }
+    ],
+    "code": [
+      { "id": "e-c-1", "text": "console.log('Hello World');" },
+      { "id": "e-c-2", "text": "let x = 10; const y = 20; return x + y;" },
+      { "id": "e-c-3", "text": "if (score > 50) { winGame(); }" },
+      { "id": "e-c-4", "text": "for (let i = 0; i < 5; i++) { doWork(); }" },
+      { "id": "e-c-5", "text": "const user = { name: 'Alex', age: 25 };" }
+    ]
+  },
+  "medium": {
+    "quotes": [
+      { "id": "m-q-1", "text": "Learning a new skill takes patience and consistent practice. Small improvements compound over time." },
+      { "id": "m-q-2", "text": "Coffee culture has evolved dramatically. What was once a simple ritual has become an art form." },
+      { "id": "m-q-3", "text": "The greatest glory in living lies not in never falling, but in rising every time we fall." },
+      { "id": "m-q-4", "text": "Technology is best when it brings people together and solves real world problems." },
+      { "id": "m-q-5", "text": "In the middle of every difficulty lies opportunity. Keep moving forward regardless of the obstacles." }
+    ],
+    "lyrics": [
+      { "id": "m-l-1", "text": "Look, if you had one shot, or one opportunity to seize everything you ever wanted in one moment." },
+      { "id": "m-l-2", "text": "Wise men say only fools rush in, but I can't help falling in love with you." },
+      { "id": "m-l-3", "text": "Don't stop believin', hold on to that feelin'. Streetlights, people, livin' just to find emotion." },
+      { "id": "m-l-4", "text": "I'm on the highway to hell! No stop signs, speed limit, nobody's gonna slow me down." },
+      { "id": "m-l-5", "text": "Near, far, wherever you are, I believe that the heart does go on." }
+    ],
+    "code": [
+      { "id": "m-c-1", "text": "function greet(name) { return `Hello, ${name}!`; }" },
+      { "id": "m-c-2", "text": "document.getElementById('btn').addEventListener('click', () => { alert('Clicked!'); });" },
+      { "id": "m-c-3", "text": "const double = arr.map(n => n * 2); console.log(double);" },
+      { "id": "m-c-4", "text": "export default function App() { return <div>Hello React</div>; }" },
+      { "id": "m-c-5", "text": "while (active) { processTask(); if (done) break; }" }
+    ]
+  },
+  "hard": {
+    "quotes": [
+      { "id": "h-q-1", "text": "Quantum entanglement continue to perplex physicists. Measuring one particle affects the other instantaneously." },
+      { "id": "h-q-2", "text": "Microplastics have infiltrated virtually every ecosystem on Earth, from the Mariana Trench to Arctic ice cores." },
+      { "id": "h-q-3", "text": "The juxtaposition of traditional architecture and brutalist structures creates a unique urban aesthetic." },
+      { "id": "h-q-4", "text": "Philosophical existentialism suggests that individuals are entirely free and responsible for their own development." },
+      { "id": "h-q-5", "text": "Interstellar travel requires overcoming immense technological hurdles and the constraints of general relativity." }
+    ],
+    "lyrics": [
+      { "id": "h-l-1", "text": "Darkness imprisoning me, all that I see, absolute horror. I cannot live, I cannot die, trapped in myself." },
+      { "id": "h-l-2", "text": "The canvas painted white, it's a silent night. In the spotlight, the world is quiet, just you and me." },
+      { "id": "h-l-3", "text": "Prophets of gloom and doom, the end is coming soon. Can you hear the thunder in the distance?" },
+      { "id": "h-l-4", "text": "Welcome to the jungle, we've got fun and games. We got everything you want, honey, we know the names." },
+      { "id": "h-l-5", "text": "Galileo, Galileo, Galileo Figaro Magnifico! I'm just a poor boy, nobody loves me." }
+    ],
+    "code": [
+      { "id": "h-c-1", "text": "const sorted = array.sort((a, b) => a.value - b.value).filter(item => item.active);" },
+      { "id": "h-c-2", "text": "async function fetchData(url) { try { const res = await fetch(url); return await res.json(); } catch(e) { console.error(e); } }" },
+      { "id": "h-c-3", "text": "const { name, email, ...rest } = user; console.log(rest);" },
+      { "id": "h-c-4", "text": "Object.keys(state).reduce((acc, curr) => ({ ...acc, [curr]: true }), {});" },
+      { "id": "h-c-5", "text": "useEffect(() => { const sub = api.subscribe(); return () => sub.unsubscribe(); }, []);" }
+    ]
+  }
+}

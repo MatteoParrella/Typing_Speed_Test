@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Migliora la tua velocità di scrittura con il Typing Speed Test professionale.">
+    
+    <title>Typing Speed Test | Pro Performance</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+</head>
+<body>
+
+    <main class="container">
+        <header class="header">
+            <div class="logo-wrapper">
+                <img src="./assets/images/logo-large.svg" alt="Typing Test Logo" class="logo">
+            </div>
+            <div class="personal-best" aria-label="Miglior punteggio personale">
+                <span>Personal best: <strong id="pb-value">0</strong> WPM</span>
+            </div>
+        </header>
+
+        <section class="stats-bar" aria-live="polite">
+            <div class="stat">
+                <p>WPM</p>
+                <span id="current-wpm">0</span>
+            </div>
+            <div class="stat">
+                <p>Accuracy</p>
+                <span id="current-accuracy">100%</span>
+            </div>
+            <div class="stat">
+                <p>Time</p>
+                <span id="current-time">60s</span>
+            </div>
+        </section>
+
+        <nav class="controls-wrapper" aria-label="Impostazioni del test">
+            <div class="control-group">
+                <span class="label">Difficulty</span>
+                <div class="button-selector" id="difficulty-options" role="radiogroup">
+                    <button class="option-btn active" data-level="easy" role="radio" aria-checked="true">Easy</button>
+                    <button class="option-btn" data-level="medium" role="radio" aria-checked="false">Medium</button>
+                    <button class="option-btn" data-level="hard" role="radio" aria-checked="false">Hard</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <span class="label">Category</span>
+                <div class="button-selector" id="category-options" role="radiogroup">
+                    <button class="option-btn active" data-cat="quotes" role="radio" aria-checked="true">Quotes</button>
+                    <button class="option-btn" data-cat="lyrics" role="radio" aria-checked="false">Lyrics</button>
+                    <button class="option-btn" data-cat="code" role="radio" aria-checked="false">Code</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <span class="label">Time Limit</span>
+                <div class="button-selector" id="duration-options" role="radiogroup">
+                    <button class="option-btn" data-time="15" role="radio" aria-checked="false">15s</button>
+                    <button class="option-btn" data-time="30" role="radio" aria-checked="false">30s</button>
+                    <button class="option-btn active" data-time="60" role="radio" aria-checked="true">60s</button>
+                    <button class="option-btn" data-time="120" role="radio" aria-checked="false">120s</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="quick-controls">
+            <button id="skip-btn" class="secondary-btn" title="Carica un nuovo testo">
+                <span>↻</span> Skip
+            </button>
+            <button id="stop-btn" class="secondary-btn hidden" title="Annulla il test corrente">
+                <span>⏹</span> Stop
+            </button>
+        </div>
+
+        <section id="typing-container" class="typing-card" tabindex="0">
+            <div id="passage-display" class="passage-text">
+                Caricamento testo in corso...
+            </div>
+            
+            <div class="typing-overlay" id="start-overlay">
+                <button id="start-btn" class="primary-btn">Start Typing Test</button>
+                <p class="hint">Or just start typing to begin</p>
+            </div>
+        </section>
+
+        <dialog id="results-modal" class="modal hidden">
+            <div class="modal-content">
+                <header>
+                    <h2 id="result-status-title">Test Complete!</h2>
+                    <p id="result-feedback">Solid run. Keep pushing!</p>
+                </header>
+
+                <div class="final-stats-grid">
+                    <article class="final-stat-card">
+                        <span>WPM</span>
+                        <strong id="final-wpm">0</strong>
+                    </article>
+                    <article class="final-stat-card">
+                        <span>Accuracy</span>
+                        <strong id="final-accuracy">0%</strong>
+                    </article>
+                    <article class="final-stat-card">
+                        <span>Characters</span>
+                        <strong id="final-chars">0/0</strong>
+                    </article>
+                </div>
+
+                <section class="heatmap-section">
+                    <h3>Key Accuracy Heatmap</h3>
+                    <div id="keyboard-heatmap" class="keyboard-grid"></div>
+                    <div class="heatmap-legend" aria-hidden="true">
+                        <div class="legend-bar"></div>
+                        <div class="legend-labels">
+                            <span>Perfect</span>
+                            <span>Needs Practice</span>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="modal-actions">
+                    <button id="download-results" class="primary-btn secondary"> Save Result Card</button>
+                    <button id="restart-btn" class="primary-btn">Go Again</button>
+                </footer>
+            </div>
+        </dialog>
+    </main>
+
+    <footer class="attribution">
+        <p>Challenge by <a href="https://www.frontendmentor.io" target="_blank" rel="noopener">Frontend Mentor</a>.</p>
+        <p>Developed with ❤️ by <a href="https://github.com/MatteoParrella" rel="noopener">Matteo Parrella</a>.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

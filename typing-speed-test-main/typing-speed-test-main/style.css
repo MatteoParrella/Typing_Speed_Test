@@ -1,0 +1,337 @@
+/* * Typing Speed Test - Professional Stylesheet
+ * Optimized for: Performance, Scalability and UX
+ */
+
+/* --- Variables & Design System --- */
+:root {
+  /* Grayscale Palette */
+  --n-900: hsl(0, 0%, 7%);
+  --n-800: hsl(0, 0%, 15%);
+  --n-500: hsl(240, 3%, 46%);
+  --n-400: hsl(240, 1%, 59%);
+  --n-0:   hsl(0, 0%, 100%);
+
+  /* Primary Palette */
+  --blue-600: hsl(214, 100%, 55%);
+  --blue-400: hsl(210, 100%, 65%);
+  --red-500:  hsl(354, 63%, 57%);
+  --green-500: hsl(140, 63%, 57%); 
+  --yellow-400: hsl(49, 85%, 70%);
+
+  /* Semantic Aliases */
+  --bg-dark:    var(--n-900);
+  --card-bg:    var(--n-800);
+  --text-main:  var(--n-0);
+  --text-muted: var(--n-500);
+  --accent:     var(--yellow-400);
+  --correct:    var(--green-500); 
+  --error:      var(--red-500);
+  
+  --font-main: 'Sora', sans-serif;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base Reset --- */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 5vw, 2rem); /* Responsive padding */
+}
+
+.container { 
+  width: 100%; 
+  max-width: 1100px; 
+  margin: auto; 
+}
+
+/* --- Layout Components --- */
+.header {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .header { flex-direction: row; justify-content: space-between; }
+}
+
+.personal-best {
+  background: var(--card-bg);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--n-500);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.personal-best strong { color: var(--accent); }
+
+/* --- Stats Bar --- */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.stat {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform var(--transition-fast);
+}
+
+.stat:hover { transform: translateY(-4px); }
+
+.stat p { color: var(--n-400); font-weight: 600; }
+
+.stat span {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--n-0);
+  line-height: 1.2;
+}
+
+/* --- Controls & Selectors --- */
+.controls-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .controls-wrapper { flex-direction: row; justify-content: space-between; }
+}
+
+.label { 
+  color: var(--n-400); 
+  font-weight: 600; 
+  margin-bottom: 0.6rem; 
+  display: block; 
+}
+
+.button-selector {
+  display: flex;
+  background: var(--card-bg);
+  padding: 4px;
+  border-radius: 14px;
+}
+
+.option-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--n-400);
+  padding: 0.7rem 1.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.option-btn:hover { color: var(--n-0); background: rgba(255,255,255,0.05); }
+
+.option-btn.active {
+  background: var(--n-900);
+  color: var(--blue-400);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* --- Typing Engine Visuals --- */
+.typing-card {
+  background: var(--card-bg);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border-radius: 28px;
+  min-height: 280px;
+  position: relative;
+  border: 2px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.typing-card:focus-within { border-color: var(--blue-600); }
+
+#passage-display {
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  word-wrap: break-word;
+  user-select: none;
+}
+
+@media (min-width: 768px) { #passage-display { font-size: 1.85rem; } }
+
+/* Char Feedback States */
+#passage-display span.char-correct { color: var(--correct) !important; }
+#passage-display span.char-error { 
+  color: var(--error) !important; 
+  background: rgba(239, 68, 68, 0.1);
+  text-decoration: underline; 
+}
+
+#passage-display span.char-current {
+  color: var(--n-0) !important; 
+  border-left: 3px solid var(--accent);
+  margin-left: -3px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* --- Quick Controls --- */
+.quick-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.secondary-btn {
+  background: var(--card-bg);
+  color: var(--n-400);
+  border: 1px solid var(--n-500);
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.secondary-btn:hover {
+  background: var(--n-900);
+  color: var(--n-0);
+  border-color: var(--blue-400);
+}
+
+#stop-btn:hover { border-color: var(--error); color: var(--error); }
+
+/* --- Heatmap UI --- */
+.heatmap-section {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--n-800);
+}
+
+.keyboard-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+  margin: 1.5rem 0;
+}
+
+.key-box {
+  background: var(--n-900);
+  border: 1px solid var(--n-800);
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--n-400);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.heatmap-legend {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-bar {
+  height: 6px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #10b981, #facc15, #ef4444);
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--n-500);
+  font-weight: 600;
+}
+
+/* --- Primary Actions --- */
+.primary-btn {
+  background: var(--blue-600);
+  color: var(--n-0);
+  border: none;
+  padding: 1.2rem 3rem;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.primary-btn:hover { 
+  background: var(--blue-400); 
+  transform: translateY(-3px) scale(1.02); 
+}
+
+/* --- Modals & Overlays --- */
+.hidden { display: none !important; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: hsla(0, 0%, 7%, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  padding: 3rem;
+  border-radius: 36px;
+  max-width: 650px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.final-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.final-stat-card span { font-size: 0.8rem; color: var(--n-400); text-transform: uppercase; font-weight: 700; }
+.final-stat-card strong { display: block; font-size: 2rem; color: var(--green-500); }
+
+/* --- Footer --- */
+.attribution { 
+  margin-top: auto; 
+  padding: 2rem 0; 
+  text-align: center; 
+  font-size: 13px; 
+  color: var(--n-500); 
+  font-weight: 500;
+}
