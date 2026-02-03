@@ -1,37 +1,73 @@
-# ⚡ Typing Speed Test - Pro Edition
+# ⚡ Typing Speed Test `Pro Edition`
 
-Un'applicazione web ad alte prestazioni progettata per testare e migliorare la velocità e la precisione di digitazione. Questo progetto combina un'architettura JavaScript moderna con un'interfaccia utente raffinata e analisi dei dati in tempo reale.
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JS" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" />
+  <img src="https://img.shields.io/badge/UI/UX-Design-FF69B4?style=for-the-badge" alt="Design" />
+</p>
 
-![Typing Test Preview](https://via.placeholder.com/800x400?text=Typing+Speed+Test+Interface)
+---
 
-## 🚀 Funzionalità Principali
+## 📖 Panoramica
+**Typing Speed Test Pro** non è un semplice esercizio di stile, ma un ecosistema completo per il *competitive typing*. Progettato con un approccio **minimalista ma potente**, offre agli sviluppatori e agli appassionati uno strumento per monitorare precisione e velocità attraverso dati analitici avanzati.
 
-- **Motore di Digitazione Real-time**: Feedback visivo istantaneo per caratteri corretti, errati e posizione corrente del cursore.
-- **Analisi Avanzata (Heatmap)**: Generazione dinamica di una mappa di calore della tastiera basata sull'accuratezza per ogni singolo tasto.
-- **Personalizzazione Totale**:
-  - **Difficoltà**: Easy, Medium, Hard.
-  - **Categorie**: Quotes (Citazioni), Lyrics (Testi musicali), Code (Snippet di programmazione reale).
-  - **Durata**: Test da 15, 30, 60 o 120 secondi.
-- **Gestione Sessione Pro**:
-  - **Skip**: Cambia testo istantaneamente senza resettare le impostazioni.
-  - **Stop/Cancel**: Annulla il test in corso e torna alla home senza inquinare le statistiche.
-- **Record Personali (PB)**: Salvataggio automatico del miglior punteggio (WPM) nel browser tramite LocalStorage.
-- **Export dei Risultati**: Generazione di un'immagine (PNG) dei tuoi risultati pronta per essere condivisa.
+> "La precisione è l'eleganza della velocità." — Un'esperienza di digitazione senza compromessi.
 
-## 🛠️ Stack Tecnologico
+---
 
-- **HTML5**: Struttura semantica avanzata per accessibilità (ARIA labels) e SEO.
-- **CSS3 (Modern Design System)**: Variabili CSS, Flexbox, Grid, e animazioni fluide con curve di Bézier.
-- **JavaScript (ES6+)**: Architettura basata su pattern **Object Literal** per una gestione dello stato pulita e modulare.
-- **Librerie Esterne**:
-  - [html2canvas](https://html2canvas.hertzen.com/) per l'export dei risultati.
-  - [canvas-confetti](https://www.npmjs.com/package/canvas-confetti) per le celebrazioni dei nuovi record.
+## ✨ Caratteristiche Uniche
 
-## 📁 Struttura del Progetto
+| Feature | Descrizione |
+| :--- | :--- |
+| 📊 **Heatmap Dinamica** | Analisi tasto per tasto con mappa di calore HSLA in tempo reale. |
+| 💻 **Coding Mode** | Allenati con snippet reali di JavaScript, React e logica asincrona. |
+| 📸 **Export PNG** | Esporta la tua scheda risultati estetica grazie a `html2canvas`. |
+| 🎯 **Personal Best** | Sistema di persistenza dei dati tramite `LocalStorage`. |
+| 🕹️ **Pro Controls** | Funzioni `Skip` e `Cancel` per una gestione fluida della sessione. |
 
+---
+
+## 🛠️ Architettura Tecnica
+
+Il progetto implementa concetti di ingegneria del software avanzati per il web:
+
+### 🧩 Pattern di Progettazione
+L'intera logica è incapsulata nel modulo `TypingTest`. Questo riduce i tempi di accesso alle variabili e previene collisioni nello spazio dei nomi globale.
+
+### ⚡ Ottimizzazioni Performance
+* **DOM Prefetching:** Gli elementi vengono memorizzati nella cache all'avvio per evitare costosi `getElementById` durante i picchi di WPM.
+* **State Machine:** Gestione rigorosa degli stati `isTestRunning` per prevenire input indesiderati o glitch del timer.
+* **HSLA Color Mapping:** Algoritmo matematico per tradurre l'accuratezza percentuale in tonalità di colore percepite dall'occhio umano.
+
+---
+
+## 🎨 Design System
+
+Il look & feel si ispira ai moderni editor di codice (Dark Mode):
+- **Superfici:** `hsl(0, 0%, 7%)` (Grigio Profondo)
+- **Accenti:** `hsl(49, 85%, 70%)` (Giallo Neon per il cursore)
+- **Feedback:** Verde smeraldo per il corretto, Rosso rubino per l'errore.
+
+---
+
+##  Come Iniziare
+
+### Prerequisiti
+È necessario un server locale (Live Server, Python, o Node.js) per gestire correttamente le richieste `fetch` al database JSON.
+
+### Installazione rapida
+1. **Clona**: `git clone https://github.com/MatteoParrella/typing-speed-test.git`
+2. **Entra**: `cd typing-speed-test`
+3. **Lancia**: Apri il file `index.html` tramite il tuo server locale preferito.
+
+---
+
+##  Struttura Directory
 ```text
-├── index.html          # Struttura semantica dell'applicazione
-├── style.css           # Design system e layout responsivo
-├── script.js           # Logica applicativa e gestione stato
-├── data.json           # Database dei testi (45+ passaggi)
-└── assets/             # Icone, loghi e immagini
+.
+├── 📄 index.html        # Struttura semantica A11y
+├── 🎨 style.css         # Design System & Responsive Layout
+├── ⚙️ script.js         # Motore JavaScript (Logic & State)
+├── 📦 data.json         # Dataset 45+ testi (Easy/Med/Hard)
+└── 📂 assets/           # Risorse grafiche vettoriali
