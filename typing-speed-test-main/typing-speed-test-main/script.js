@@ -198,15 +198,18 @@ const TypingTest = {
         clearInterval(this.timer);
         this.ui.stopBtn?.classList.add('hidden');
 
-        const wpm = parseInt(this.ui.wpm.innerText);
-        const acc = this.ui.accuracy.innerText;
+        // Calcolo preciso finale invece di leggere dal DOM
+        const activeTime = parseInt(document.querySelector('#duration-options .active')?.dataset.time || 60);
+        const timeSpent = (activeTime - this.timeLeft) / 60;
+        const finalWpm = timeSpent > 0 ? Math.round((this.charIndex / 5) / timeSpent) : 0;
+        const finalAcc = this.totalTyped > 0 ? Math.round(((this.totalTyped - this.errors) / this.totalTyped) * 100) : 100;
         
-        document.getElementById('final-wpm').innerText = wpm;
-        document.getElementById('final-accuracy').innerText = acc;
+        document.getElementById('final-wpm').innerText = finalWpm;
+        document.getElementById('final-accuracy').innerText = `${finalAcc}%`;
         document.getElementById('final-chars').innerText = `${this.charIndex - this.errors}/${this.errors}`;
 
         this.generateHeatmap();
-        this.handleHighscore(wpm);
+        this.handleHighscore(finalWpm);
         
         this.ui.modal.classList.remove('hidden');
     },
